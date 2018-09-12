@@ -51,6 +51,8 @@
         </div>
 
         <div class="card">
+            <a href="attendants-add.php">
+            <input type="submit" class="btn btn-primary pull-right" style="background: #22262A;border: #22262A" value="Add Attendant"></a>
             <div class="content mt-3">
                 <div class="animated fadeIn">
                     <div class="row">
@@ -71,18 +73,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                       <?php foreach ($st5 as $key => $value) {?>
                                         <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>Musanze Rwanda</td>
-                                            <td>0786563783</td>
-                                            <td>2018-09-09</td>
+                                            <td><?=$value['first_name']." ".$value['last_name']?></td>
+                                            <td><?=$value['address']?></td>
+                                            <td><?=$value['phone']?></td>
+                                            <td><?=$value['created_at']?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>Musanze Rwanda</td>
-                                            <td>0786563783</td>
-                                            <td>2018-09-09</td>
-                                        </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

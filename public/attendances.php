@@ -71,36 +71,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        	<?php foreach ($st4 as $key => $value) {?>
                                         <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>0787876778</td>
-                                            <td>School Attendance</td>
-                                            <td>2018-09-12 08:00:12</td>
+                                            <td><?=getAttendant($value['attendant'])[2]. " ".getAttendant($value['attendant'])[3]?></td>
+                                            <td><?=getAttendant($value['attendant'])[5]?></td>
+                                            <td><?=getEvent($value['event_id'])?></td>
+                                            <td><?=$value['attended_at']?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>0787876778</td>
-                                            <td>School Attendance</td>
-                                            <td>2018-09-12 08:00:12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>0787876778</td>
-                                            <td>School Attendance</td>
-                                            <td>2018-09-12 08:00:12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>0787876778</td>
-                                            <td>School Attendance</td>
-                                            <td>2018-09-12 08:00:12</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ikirezi Honnette</td>
-                                            <td>0787876778</td>
-                                            <td>School Attendance</td>
-                                            <td>2018-09-12 08:00:12</td>
-                                        </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

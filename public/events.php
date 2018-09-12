@@ -57,6 +57,8 @@
 
                         <div class="col-md-12">
                             <div class="card">
+                                 <a href="event-add.php">
+                                <input type="submit" class="btn btn-primary pull-right" style="background: #22262A;border: #22262A" value="Add Event"></a>
                                 <div class="card-header">
                                     <strong class="card-title">Events</strong>
                                 </div>
@@ -71,12 +73,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                            <?php foreach ($st2 as $key => $value) {?>
                                         <tr>
-                                            <td>School Attendance</td>
-                                            <td>2018-01-07</td>
-                                            <td>2018-31-12</td>
+                                            <td><?=$value['name']?></td>
+                                            <td><?=$value['created_at']?></td>
+                                            <td><?=$value['date']?></td>
                                             <td><span style="color: white;background: #E74C3C;padding: 0px 15px 5px 15px;font-weight: bold;border-radius: 5px">on going</span></td>
                                         </tr>
+                                        <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>

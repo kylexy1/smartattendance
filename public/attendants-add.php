@@ -13,9 +13,9 @@ require_once("../web-config/database.php");
 if (isset($_POST['submit'])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $username = $_POST['username'];
-    $password = md5($_POST['password']);
-    if ($database->query("INSERT INTO user (fname,lname,username,password,active,level,lastlogin) VALUES ('$fname','$lname', '$username','$password','1','1',now())")){
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    if ($database->query("INSERT INTO attendants (first_name,last_name,address,phone) VALUES ('$fname','$lname', '$address','$phone')")){
         header("location:home.php");
     }
 }
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])){
             <div class="login-content">
                 <div class="login-logo">
                     <a href="index.php">
-                        <h1 style="color: white">S.A.S Admin </h1>
+                        <h1 style="color: white">Add an Attendant </h1>
                     </a>
                 </div>
                 <div class="login-form">
@@ -41,24 +41,16 @@ if (isset($_POST['submit'])){
                         </div>
                         
                         <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" name="email" class="form-control" maxlength="255">
+                            <label>address</label>
+                            <input type="address" name="address" class="form-control" maxlength="255">
                         </div>
                         
                         <div class="form-group">
-                            <label>User Name</label><span class="required-mark">*</span>
-                            <input type="text" name="username" class="form-control" maxlength="16">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Password</label><span class="required-mark">*</span>
-                            <input type="password" id="password" name="password" class="form-control" maxlength="40">
+                            <label>Phone</label><span class="required-mark">*</span>
+                            <input type="text" name="phone" class="form-control" maxlength="16">
                         </div>
                        
-                        <button type="submit" name="submit"  style="background: #343A40" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
-                        <div class="register-link m-t-15 text-center">
-                            <p>Already have account ? <a href="index">Back</a></p>
-                        </div>
+                        <button type="submit" name="submit"  style="background: #343A40" class="btn btn-primary btn-flat m-b-30 m-t-30">Submit</button>
                     </form>
                 </div>
             </div>
