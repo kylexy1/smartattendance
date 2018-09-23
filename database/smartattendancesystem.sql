@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2018 at 01:48 PM
+-- Generation Time: Sep 23, 2018 at 11:23 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -30,9 +30,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `attendances` (
   `id` int(11) NOT NULL,
-  `attendant` int(11) NOT NULL,
+  `attendant` text NOT NULL,
   `attended_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `event_id` int(11) NOT NULL
+  `event_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43,13 +44,21 @@ CREATE TABLE `attendances` (
 
 CREATE TABLE `attendants` (
   `id` int(11) NOT NULL,
-  `card_id` int(11) NOT NULL,
+  `card_id` text NOT NULL,
   `first_name` text NOT NULL,
   `last_name` text NOT NULL,
   `address` text NOT NULL,
   `phone` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendants`
+--
+
+INSERT INTO `attendants` (`id`, `card_id`, `first_name`, `last_name`, `address`, `phone`, `created_at`) VALUES
+(1, '72571443180371', 'honnette', 'ikirezi', 'musanze', '26556156165', '2018-09-23 21:13:05'),
+(2, '815396723', 'gislaine', '', 'musanze', '26556156165', '2018-09-23 21:13:05');
 
 -- --------------------------------------------------------
 
@@ -60,7 +69,7 @@ CREATE TABLE `attendants` (
 CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` date NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -69,10 +78,7 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `name`, `created_at`, `date`) VALUES
-(1, 'umushyikirano', '2018-06-26 10:02:08', '2018-06-05'),
-(2, 'amatora', '2018-06-26 10:02:13', '2018-06-13'),
-(3, 'umushyikrano', '2018-06-26 10:46:46', '2018-06-13'),
-(4, 'ghh', '2018-06-26 10:59:08', '0000-00-00');
+(1, 'School attendance System', '2018-09-13', '2018-09-05');
 
 -- --------------------------------------------------------
 
@@ -98,8 +104,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fname`, `lname`, `username`, `password`, `active`, `level`, `date_created`, `lastlogin`, `ip`) VALUES
-(1, 'honnette', 'R', 'honnette', '5f4dcc3b5aa765d61d8327deb882cf99', '1', '1', '2016-04-14 02:22:15', '2018-04-30 13:54:13', '192.168.0.105'),
-(2, 'prince', 'R', 'prince', '5f4dcc3b5aa765d61d8327deb882cf99', '1', '1', '2016-04-14 02:22:15', '2018-08-19 20:26:37', '1');
+(1, 'honnette', 'R', 'honnette', '5f4dcc3b5aa765d61d8327deb882cf99', '1', '1', '2016-04-14 02:22:15', '2018-09-23 23:15:06', '1'),
+(2, 'prince', 'R', 'prince', '6cb75f652a9b52798eb6cf2201057c73', '1', '1', '2016-04-14 02:22:15', '2018-09-02 22:47:22', '1'),
+(5, 'gisele', 'gis', '', '5f4dcc3b5aa765d61d8327deb882cf99', '0', '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '');
 
 --
 -- Indexes for dumped tables
@@ -143,19 +150,19 @@ ALTER TABLE `attendances`
 -- AUTO_INCREMENT for table `attendants`
 --
 ALTER TABLE `attendants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
