@@ -20,7 +20,7 @@ function getAttendant($id){
 	$username="root";
 	$password="";
 	$conn = new PDO('mysql:host=localhost;dbname=smartattendancesystem', $username, $password);
-	foreach ($conn->query("SELECT * FROM attendants WHERE id=$id") as $key => $value) {
+	foreach ($conn->query("SELECT * FROM attendants WHERE card_id='$id' LIMIT 1") as $key => $value) {
 	 	return $value;
 	 } 
 }
